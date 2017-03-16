@@ -7,6 +7,7 @@ var express = require('express')
     , routes = require('./routes')
   , user = require('./routes/user')
   , http = require('http')
+  , sensorTopology = require('./routes/sensorTopology')
   , path = require('path');
 
 var app = express()
@@ -40,7 +41,16 @@ app.post('/signup',user.signup);
 app.get('/profileusername', user.profileusername);
 app.get('/logoutsession',user.logoutsession);
 app.get("/sensordata",user.sensordata);
-// app.get("/sensortopology", users.sensortopology);
+
+//Sensor topology
+app.get("/sensortopology", user.sensortopology);
+/*app.get("/sensortopology", user.sensortopology);
+app.get("/sensortopology/map", user.map);
+app.get("/sensortopology/realTimeData", user.realTimeData);*/
+//app.get('/sensorTopology', sensorTopology.renderTopology);
+app.get('/sensorRealTimeData', sensorTopology.sensorRealTimeData);
+app.get('/sensorInfo', sensorTopology.sensorInfo);
+//end of sensor topology
 
 //pages
 app.get('/home',user.home);

@@ -42,6 +42,10 @@ function salinity(req,res){
     res.render('indv_sensors', { title: 'Salinity', json_name: "Salinity", color: "#FF5733" });
 }
 
+function sensortopology(req,res) {
+    res.render('sensortopology', { title: 'SensorTopology'});
+}
+
 exports.login = login;
 exports.home = home;
 exports.humidity = humidity;
@@ -50,6 +54,8 @@ exports.moisture = moisture;
 exports.temperature = temperature;
 exports.pH = pH;
 exports.salinity = salinity;
+exports.sensortopology = sensortopology;
+
 
 
 //MAINTAINING SESSION LOGIN
@@ -128,14 +134,11 @@ exports.signup = function(req, res) {
                 "status" : err.statusCode
             });
         } else {
-
             req.session.uname = name;
             console.log("Session name: " + req.session.uname);
             console.log("success");
             res.render('index');
-
         }
-
     },variables.foris_users,name,fname,lname,email,password,devid);
 
 };
@@ -213,12 +216,3 @@ exports.logoutsession = function(req, res) {
         "status" : 200
     });
 };
-
-exports.sensortopology = function(req,res) {
-
-
-
-
-}
-
-

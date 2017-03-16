@@ -29,13 +29,14 @@
 
     <!-- Importing content of Angular -->
 
-    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js" type="text/javascript"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js" type="text/javascript"></script>
     <!-- Do not include the below bootstrap library -->
     <!-- <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script> -->
 
-    <!--             -->
 
+
+    <!--             -->
     <script>
         var app = angular.module("forisApp", []);
         app.controller("homeCtrl", ['$scope', '$http', '$window', function( $scope,$http,$window) {
@@ -170,7 +171,7 @@
                       <li><a href="/salinity">Salinity</a></li>
                     </ul>
                   </li>
-                  <li><a href="http://35.165.92.223:9000/"><i class="fa fa-globe"></i> Sensor Topology</a>
+                  <li><a href="/sensortopology"><i class="fa fa-globe"></i> Sensor Topology</a>
                   </li>
                   <!-- <li><a><i class="fa fa-clone"></i>Layouts <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
