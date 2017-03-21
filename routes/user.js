@@ -19,7 +19,7 @@ function home(req,res){
 }
 
 function humidity(req,res){
-    res.render('indv_sensors', { title: 'Humidity', json_name: "Humidity", color: "#20B2AA" });
+    res.render('indv_sensors', { title: 'Humidity', json_name: "Humidity", color: "#ffff00" });
 }
 
 function water(req,res){
@@ -169,41 +169,54 @@ exports.profileusername = function(req, res){
 exports.sensordata = function(req, res){
     console.log("Inside sensordata");
     var name = req.session.uname;
-    request('http://foris.mybluemix.net/HelloWorld?q=webapp_token_many', function (error, response, body) {
-        if (!error && response.statusCode == 200) {
-            var jsonstr=JSON.stringify(body);
-            var jsonarray = JSON.parse(body);
-            // var d1 = data[0];
-            // var d2 = d1["sensor"];
-            // var d3 = d2["Moisture"];
-            console.log("Sensor data successfully fethced");
-            console.log("Sensor Data:" + jsonstr);
-            res.send({"sensor_data":jsonstr, "sensor_arr":jsonarray});
-        }
-        else
-        {
-            console.log("Unable to get sensor data");
-            res.send({
-                "status" : 100
-            });
-        }
-    });
-
-    // database.fetchData(function(err, results) {
-    //     if (err) {
+    // request('http://foris.mybluemix.net/HelloWorld?q=webapp_token_many', function (error, response, body) {
+    //     if (!error && response.statusCode == 200) {
+    //         var jsonstr=JSON.stringify(body);
+    //         var jsonarray = JSON.parse(body);
+    //         // var d1 = data[0];
+    //         // var d2 = d1["sensor"];
+    //         // var d3 = d2["Moisture"];
+    //         console.log("Sensor data successfully fethced");
+    //         console.log("Sensor Data:" + jsonstr);
+    //         res.send({"sensor_data":jsonstr, "sensor_arr":jsonarray});
+    //     }
+    //     else
+    //     {
     //         console.log("Unable to get sensor data");
     //         res.send({
     //             "status" : 100
     //         });
-    //     } else {
-    //         console.log(results);
-    //         var jsonstr=JSON.stringify(results.data);
-    //         var data = JSON.parse(results.data);
-    //         console.log(jsonstr);
-    //         console.log("sensor data fetched successfully");
-    //         res.send({"sensor_data":jsonstr});
     //     }
-    // }, variables.sensor_db, name);
+    // });
+
+    database.allDocs(function(err, results) {
+        var res_dict = [];
+        if (err) {
+            console.log("Unable to get sensor data");
+            res.send({
+                "status" : 100
+            });
+        } else {
+            console.log("Printing sensor data in loop");
+            results.rows.forEach(function(doc){
+
+                console.log(doc["doc"].data);
+
+                res_dict.push({
+                    "TimeStamp":doc["doc"].TimeStamp,
+                    "Temperature":doc["doc"].data.temperature,
+                    "Humidity":doc["doc"].data.humidity,
+                    "Moisture":doc["doc"].data.moisture,
+                    "Salinity":doc["doc"].data.salinity,
+                });
+            });
+
+            // var jsonstr=JSON.stringify(results);
+            // // var data = JSON.parse(results);
+            // console.log(jsonstr);
+            res.send(res_dict);
+        }
+    }, variables.sensor_db);
 
 };
 

@@ -855,15 +855,15 @@
 
 <!--Sensor chart start-->
 <script>
-    $.getJSON('http://foris.mybluemix.net/HelloWorld?q=webapp_token_many', function (data) {
+    $.getJSON('/sensordata', function (data) {
 
         var data_point = []; //creating sensor value dictionary
         for (var i = 0; i < data.length; i++) {
-            var d1 = data[i];
-            var dattime = d1["timestamp"];  //datetime
+            var dattime = data[i].TimeStamp;  //datetime
             dattime = new Date(Date.UTC(dattime.substring(0, 4), (dattime.substring(5, 7) - 1), dattime.substring(8, 10), dattime.substring(11, 13), dattime.substring(14, 16)));
-            var d2 = d1["sensor"];
-            var val = d2["<%= json_name%>"];
+            var d2 = data[i];
+            var val = d2["<%= json_name%>"];  //Sensor value
+
             data_point.push({
                 x: dattime, y: val
             });
