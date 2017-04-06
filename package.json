@@ -11,6 +11,6 @@
     "cloudant": "^1.7.1",
     "ejs": "*",
     "express": "3.2.6",
-    "request": "^2.80.0"
+    "request": "^2.81.0"
   }
 }
