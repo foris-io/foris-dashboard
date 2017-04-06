@@ -68,7 +68,7 @@
                     then(function(response)
                     {
                         console.log("Got sensor info");
-                        $scope.sensordata = response.data.sensor_arr;
+                        $scope.sensordata = response.data;
 
                     });
                 }
@@ -313,11 +313,12 @@
               <div class="count" id="avg_pH">6.00</div>
               <span class="count_bottom"><i class="red"><i class="fa fa-sort-asc"></i>1% </i> From last Week</span>
             </div>
-<!--             <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
-              <span class="count_top"><i class="fa fa-user"></i> Total Connections</span>
-              <div class="count">00.00</div>
-              <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>34% </i> From last Week</span>
-            </div> -->
+            <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+              <span class="count_top"><i class="fa fa-globe"></i> Humidity</span>
+              <div class="count" id="avg_humidity">38</div>
+              <span class="count_bottom"><i class="red"><i class="fa fa-sort-asc"></i>1% </i> From last Week</span>
+            </div>
+
           </div>
           <!-- /top tiles -->
 
@@ -999,23 +1000,20 @@
 
     <!--Sensor chart start-->
     <script>
-//        var app = angular.module("forisApp", []);
-//        app.controller("chartCtrl", ['$scope', function( $scope) {
-            $.getJSON('http://foris.mybluemix.net/HelloWorld?q=webapp_token_many', function (data) {
+            $.getJSON('/sensordata', function (data) {
 
-                //Finding average readings
+                 //Finding average readings
                 var avg_moisture = 0,
                     avg_temp = 0,
                     avg_salinity = 0,
-                    avg_pH = 0;
+                    avg_pH = 0,
+                    avg_humidity = 0;
 
                 var moisture = []; //creating moisture dictionary
                 for (var i = 0; i < data.length; i++) {
-                    var d1 = data[i];
-                    var dattime = d1["timestamp"];  //datetime
+                    var dattime = data[i].TimeStamp;  //datetime
                     dattime = new Date(Date.UTC(dattime.substring(0, 4), (dattime.substring(5, 7) - 1), dattime.substring(8, 10), dattime.substring(11, 13), dattime.substring(14, 16)));
-                    var d2 = d1["sensor"];
-                    var val = d2["Moisture"];
+                    var val = data[i].Moisture;  //Sensor value
                     moisture.push({
                         x: dattime, y: val
                     });
@@ -1030,11 +1028,9 @@
 
                 var temperature = []; //creating Temperature dictionary
                 for (var i = 0; i < data.length; i++) {
-                    var d1 = data[i];
-                    var dattime = d1["timestamp"];  //datetime
+                    var dattime = data[i].TimeStamp;  //datetime
                     dattime = new Date(Date.UTC(dattime.substring(0, 4), (dattime.substring(5, 7) - 1), dattime.substring(8, 10), dattime.substring(11, 13), dattime.substring(14, 16)));
-                    var d2 = d1["sensor"];
-                    var val = d2["Temperature"];
+                    var val = data[i].Temperature;  //Sensor value
                     temperature.push({
                         x: dattime, y: val
                     });
@@ -1047,11 +1043,9 @@
 
                 var salinity = []; //creating Salinity dictionary
                 for (var i = 0; i < data.length; i++) {
-                    var d1 = data[i];
-                    var dattime = d1["timestamp"];  //datetime
+                    var dattime = data[i].TimeStamp;  //datetime
                     dattime = new Date(Date.UTC(dattime.substring(0, 4), (dattime.substring(5, 7) - 1), dattime.substring(8, 10), dattime.substring(11, 13), dattime.substring(14, 16)));
-                    var d2 = d1["sensor"];
-                    var val = d2["Salinity"];
+                    var val = data[i].Salinity;  //Sensor value
                     salinity.push({
                         x: dattime, y: val
                     });
@@ -1065,10 +1059,9 @@
                 var pH = []; //creating pH dictionary
                 for (var i = 0; i < data.length; i++) {
                     var d1 = data[i];
-                    var dattime = d1["timestamp"];  //datetime
+                    var dattime = data[i].TimeStamp;  //datetime
                     dattime = new Date(Date.UTC(dattime.substring(0, 4), (dattime.substring(5, 7) - 1), dattime.substring(8, 10), dattime.substring(11, 13), dattime.substring(14, 16)));
-                    var d2 = d1["sensor"];
-                    var val = d2["Ph"];
+                    var val = data[i].pH;  //Sensor value
                     pH.push({
                         x: dattime, y: val
                     });
@@ -1077,6 +1070,22 @@
                 if (data.length != 0) {
                     avg_pH = (avg_pH / data.length);
                     document.getElementById("avg_pH").innerHTML = avg_pH.toFixed(2);
+                }
+
+                var humidity = []; //creating Humidity dictionary
+                for (var i = 0; i < data.length; i++) {
+                    var d1 = data[i];
+                    var dattime = data[i].TimeStamp;  //datetime
+                    dattime = new Date(Date.UTC(dattime.substring(0, 4), (dattime.substring(5, 7) - 1), dattime.substring(8, 10), dattime.substring(11, 13), dattime.substring(14, 16)));
+                    var val = data[i].Humidity;  //Sensor value
+                    humidity.push({
+                        x: dattime, y: val
+                    });
+                    avg_humidity = avg_humidity + val;
+                }
+                if (data.length != 0) {
+                    avg_humidity = (avg_humidity / data.length);
+                    document.getElementById("avg_humidity").innerHTML = avg_humidity.toFixed(2);
                 }
 
                 var chart = new CanvasJS.Chart("chartContainer",
@@ -1121,11 +1130,19 @@
                             {
                                 type: "line",
                                 showInLegend: true,
-                                name: "pH",
-                                color: "#C71585",
+                                name: "Humidity",
+                                color: "#ffff00",
                                 lineThickness: 2,
-                                dataPoints: pH
+                                dataPoints: humidity
                             },
+//                            {
+//                                type: "line",
+//                                showInLegend: true,
+//                                name: "pH",
+//                                color: "#C71585",
+//                                lineThickness: 2,
+//                                dataPoints: pH
+//                            },
                             {
                                 type: "line",
                                 showInLegend: true,

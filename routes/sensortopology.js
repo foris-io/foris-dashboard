@@ -2,13 +2,7 @@ var database = require('./database');
 var variables = require('./variables');
 var request = require('request');
 var Cloudant = require('cloudant');
-var cloudant = Cloudant({account:"sachet", password:"Foris", function(err,cloudant){
-
-	if(err){
-		return console.log('Init Failed!');
-	}
-}
-});
+var cloudant = Cloudant({account: 'sachet', password: 'Foris'});
 
 
 /* GET sensor info */

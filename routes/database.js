@@ -2,11 +2,13 @@
  * Created by Pavani Vellal on 05-Mar-2017.
  */
 
+var variables = require('./variables');
+
 var ejs = require("ejs");
 var async = require('async');
 var Cloudant = require('cloudant');
-var username = "sachet",
-    password = "Foris",
+var username = variables.username,
+    password = variables.password,
     cloudant = Cloudant({account: username, password: password}),
    // dbname = null,
     db = null,
@@ -42,6 +44,18 @@ function createUser(callback,dbName,docID, fname, lname, email,password,devid){
   });
 }
 
+//Reading all documents in database
+function allDocs(callback,dbName){
+    console.log("Reading all documents in db " + dbName);
+    var db=getConnection(dbName);
+    db.list({include_docs:true}, function(err,data){
+        console.log("Error:", err);
+        console.log("Data:", data);
+        callback(err, data);
+    });
+}
+
 
 exports.fetchData=fetchData;
 exports.createUser=createUser;
+exports.allDocs = allDocs;

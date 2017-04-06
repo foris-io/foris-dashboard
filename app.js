@@ -7,7 +7,7 @@ var express = require('express')
     , routes = require('./routes')
   , user = require('./routes/user')
   , http = require('http')
-  , sensorTopology = require('./routes/sensorTopology')
+  , sensorTopology = require('./routes/sensortopology')
   , path = require('path');
 
 var app = express()
@@ -44,10 +44,6 @@ app.get("/sensordata",user.sensordata);
 
 //Sensor topology
 app.get("/sensortopology", user.sensortopology);
-/*app.get("/sensortopology", user.sensortopology);
-app.get("/sensortopology/map", user.map);
-app.get("/sensortopology/realTimeData", user.realTimeData);*/
-//app.get('/sensorTopology', sensorTopology.renderTopology);
 app.get('/sensorRealTimeData', sensorTopology.sensorRealTimeData);
 app.get('/sensorInfo', sensorTopology.sensorInfo);
 //end of sensor topology
