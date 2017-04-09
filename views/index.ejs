@@ -859,8 +859,9 @@
 
                   var nextday;
 
-                  nextday = getnextday(1);
-                  document.getElementById("dayone").innerHTML = weekDay[nextday.getDay()];
+                  //nextday = getnextday(1);
+                  var today = new Date();
+                  document.getElementById("dayone").innerHTML = weekDay[today.getDay()];
                   document.getElementById("tempone").innerHTML = weatherResult[0];
 
                   nextday = getnextday(2);
@@ -883,9 +884,9 @@
                   document.getElementById("daysix").innerHTML = weekDay[nextday.getDay()];
                   document.getElementById("tempsix").innerHTML = weatherResult[5];
 
-                  nextday = getnextday(7);
+                  /*nextday = getnextday(7);
                   document.getElementById("dayseven").innerHTML = weekDay[nextday.getDay()];
-                  document.getElementById("tempseven").innerHTML = weatherResult[6];
+                  document.getElementById("tempseven").innerHTML = weatherResult[6];*/
 
                   var today = new Date();
                   document.getElementById("currentday").innerHTML = weekDay[today.getDay()];
@@ -928,11 +929,11 @@
                         </div>
                         <div class="col-sm-8">
                           <div class="weather-text">
-                            <h2>California <br><i>Weather Forecast for this week</i></h2>
+                            <h2><br><i>Weather Forecast for this week</i></h2>
                           </div>
                         </div>
                       </div>
-                      
+
 
                       <div class="clearfix"></div>
                       <div class="row weather-days">
@@ -970,12 +971,6 @@
                           <div class="daily-weather">
                             <h2 class="day" id="daysix"></h2>
                             <h3 class="degrees" id="tempsix"></h3>
-                          </div>
-                        </div>
-                        <div class="col-sm-2">
-                          <div class="daily-weather">
-                            <h2 class="day" id="dayseven"></h2>
-                            <h3 class="degrees" id="tempseven"></h3>
                           </div>
                         </div>
                         <div class="clearfix"></div>

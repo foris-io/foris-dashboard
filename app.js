@@ -7,7 +7,7 @@ var express = require('express')
     , routes = require('./routes')
   , user = require('./routes/user')
   , http = require('http')
-  , sensorTopology = require('./routes/sensorTopology')
+  , sensorTopology = require('./routes/sensortopology')
   , weather = require('./routes/weather')
   , path = require('path');
 
@@ -63,6 +63,8 @@ app.get('/pH',user.pH);
 app.get('/salinity',user.salinity);
 app.get('/hometest', routes.hometest);
 app.get('/weatherdata', weather.fetchWeatherData);
+app.get('/weatherdatamin', weather.fetchWeatherDataMin);
+
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
