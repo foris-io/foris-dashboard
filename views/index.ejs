@@ -308,16 +308,17 @@
               <div class="count" id="avg_salinity">963</div>
               <span class="count_bottom"><i class="red"><i class="fa fa-sort-desc"></i>12% </i> From last Week</span>
             </div>
+            <!--<div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">-->
+              <!--<span class="count_top"><i class="fa fa-globe"></i> pH</span>-->
+              <!--<div class="count" id="avg_pH">6.00</div>-->
+              <!--<span class="count_bottom"><i class="red"><i class="fa fa-sort-asc"></i>1% </i> From last Week</span>-->
+            <!--</div>-->
             <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
-              <span class="count_top"><i class="fa fa-globe"></i> pH</span>
-              <div class="count" id="avg_pH">6.00</div>
+              <span class="count_top"><i class="fa fa-globe"></i> Humidity</span>
+              <div class="count" id="avg_humidity">38</div>
               <span class="count_bottom"><i class="red"><i class="fa fa-sort-asc"></i>1% </i> From last Week</span>
             </div>
-<!--             <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
-              <span class="count_top"><i class="fa fa-user"></i> Total Connections</span>
-              <div class="count">00.00</div>
-              <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>34% </i> From last Week</span>
-            </div> -->
+
           </div>
           <!-- /top tiles -->
 
@@ -1116,7 +1117,7 @@
                 }
                 if (data.length != 0) {
                     avg_pH = (avg_pH / data.length);
-                    document.getElementById("avg_pH").innerHTML = avg_pH.toFixed(2);
+//                    document.getElementById("avg_pH").innerHTML = avg_pH.toFixed(2);
                 }
 
                 var chart = new CanvasJS.Chart("chartContainer",
