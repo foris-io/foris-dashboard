@@ -632,7 +632,8 @@
                     avg_temp = 0,
                     avg_salinity = 0,
                     avg_pH = 0,
-                    avg_humidity = 0;
+                    avg_humidity = 0,
+                    tickInterval = Math.round(data.length / 10);
 
                 var timestamp = []; //creating moisture dictionary
                 var moisture = []; //creating moisture dictionary
@@ -680,70 +681,6 @@
 
                 }
 
-                    //                var moisture = []; //creating moisture dictionary
-//                for (var i = 0; i < data.length; i++) {
-//                    var dattime = data[i].TimeStamp;  //datetime
-//                    dattime = new Date(Date.UTC(dattime.substring(0, 4), (dattime.substring(5, 7) - 1), dattime.substring(8, 10), dattime.substring(11, 13), dattime.substring(14, 16), dattime.substring(17, 19)));
-//
-//                    var val = data[i].Moisture;  //Sensor value
-//                    moisture.push(val);
-//                    avg_moisture = avg_moisture + val;
-//                }
-
-
-//                var temperature = []; //creating Temperature dictionary
-//                for (var i = 0; i < data.length; i++) {
-//                    var dattime = data[i].TimeStamp;  //datetime
-//                    dattime = new Date(Date.UTC(dattime.substring(0, 4), (dattime.substring(5, 7) - 1), dattime.substring(8, 10), dattime.substring(11, 13), dattime.substring(14, 16), dattime.substring(17, 19)));
-//                    var val = Math.round(data[i].Temperature * 9 / 5 + 32) ;  //Sensor value
-//                    temperature.push(val);
-//                    avg_temp = avg_temp + val;
-//                }
-//                if (data.length != 0) {
-//                    avg_temp = (avg_temp / data.length);
-//                    document.getElementById("avg_temperature").innerHTML = avg_temp.toFixed(2) + " &#8457;";
-//                }
-
-//                var salinity = []; //creating Salinity dictionary
-//                for (var i = 0; i < data.length; i++) {
-//                    var dattime = data[i].TimeStamp;  //datetime
-//                    dattime = new Date(Date.UTC(dattime.substring(0, 4), (dattime.substring(5, 7) - 1), dattime.substring(8, 10), dattime.substring(11, 13), dattime.substring(14, 16), dattime.substring(17, 19)));
-//                    var val = data[i].Salinity;  //Sensor value
-//                    salinity.push(val);
-//                    avg_salinity = avg_salinity + val;
-//                }
-//                if (data.length != 0) {
-//                    avg_salinity = (avg_salinity / data.length);
-//                    document.getElementById("avg_salinity").innerHTML = avg_salinity.toFixed(2);
-//                }
-
-//                var pH = []; //creating pH dictionary
-//                for (var i = 0; i < data.length; i++) {
-//                    var dattime = data[i].TimeStamp;  //datetime
-//                    dattime = new Date(Date.UTC(dattime.substring(0, 4), (dattime.substring(5, 7) - 1), dattime.substring(8, 10), dattime.substring(11, 13), dattime.substring(14, 16), dattime.substring(17, 19)));
-//                    var val = data[i].pH;  //Sensor value
-//                    pH.push(val);
-//                    avg_pH = avg_pH + val;
-//                }
-//                if (data.length != 0) {
-//                    avg_pH = (avg_pH / data.length);
-////                    document.getElementById("avg_pH").innerHTML = avg_pH.toFixed(2);
-//                }
-
-//                    var humidity = []; //creating Humidity dictionary
-//                    for (var i = 0; i < data.length; i++) {
-//                      var d1 = data[i];
-//                      var dattime = data[i].TimeStamp;  //datetime
-//                      dattime = new Date(Date.UTC(dattime.substring(0, 4), (dattime.substring(5, 7) - 1), dattime.substring(8, 10), dattime.substring(11, 13), dattime.substring(14, 16), dattime.substring(17, 19)));
-//                      var val = data[i].Humidity;  //Sensor value
-//                        humidity.push(val);
-//                      avg_humidity = avg_humidity + val;
-//                      }
-//                      if (data.length != 0) {
-//                      avg_humidity = (avg_humidity / data.length);
-//                      document.getElementById("avg_humidity").innerHTML = avg_humidity.toFixed(2);
-//                       }
-
 
 
                     Highcharts.chart('chartContainer', {
@@ -755,7 +692,8 @@
                         },
                         xAxis: [{
                             categories: timestamp,
-                            crosshair: true
+                            crosshair: true,
+                            tickInterval: tickInterval
                         }],
                         yAxis: [{ // Primary yAxis
                             labels: {
