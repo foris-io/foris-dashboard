@@ -68,7 +68,7 @@
                     then(function(response)
                     {
                         console.log("Got sensor info");
-                        $scope.sensordata = response.data.sensor_arr;
+                        $scope.sensordata = response.data;
 
                     });
                 }
@@ -210,10 +210,10 @@
 
 
                 <li role="presentation" class="dropdown">
-                  <a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
-                    <i class="fa fa-envelope-o"></i>
-                    <span class="badge bg-green"></span>
-                  </a>
+                  <!--<a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">-->
+                    <!--<i class="fa fa-envelope-o"></i>-->
+                    <!--<span class="badge bg-green"></span>-->
+                  <!--</a>-->
                   <ul id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu">
                     <li>
                       <a>
@@ -314,10 +314,10 @@
               <!--<span class="count_bottom"><i class="red"><i class="fa fa-sort-asc"></i>1% </i> From last Week</span>-->
             <!--</div>-->
             <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
-              <span class="count_top"><i class="fa fa-globe"></i> Humidity</span>
-              <div class="count" id="avg_humidity">38</div>
-              <span class="count_bottom"><i class="red"><i class="fa fa-sort-asc"></i>1% </i> From last Week</span>
-            </div>
+             <span class="count_top"><i class="fa fa-globe"></i> Humidity</span>
+             <div class="count" id="avg_humidity">38</div>
+             <span class="count_bottom"><i class="red"><i class="fa fa-sort-asc"></i>1% </i> From last Week</span>
+             </div>
 
           </div>
           <!-- /top tiles -->
@@ -358,408 +358,9 @@
           <div class="row">
 
 
-            <!-- <div class="col-md-4 col-sm-4 col-xs-12">
-              <div class="x_panel tile fixed_height_320">
-                <div class="x_title">
-                  <h2>App Versions</h2>
-                  <ul class="nav navbar-right panel_toolbox">
-                    <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                    </li>
-                    <li class="dropdown">
-                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
-                      <ul class="dropdown-menu" role="menu">
-                        <li><a href="#">Settings 1</a>
-                        </li>
-                        <li><a href="#">Settings 2</a>
-                        </li>
-                      </ul>
-                    </li>
-                    <li><a class="close-link"><i class="fa fa-close"></i></a>
-                    </li>
-                  </ul>
-                  <div class="clearfix"></div>
-                </div>
-                <div class="x_content">
-                  <h4>App Usage across versions</h4>
-                  <div class="widget_summary">
-                    <div class="w_left w_25">
-                      <span>0.1.5.2</span>
-                    </div>
-                    <div class="w_center w_55">
-                      <div class="progress">
-                        <div class="progress-bar bg-green" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 66%;">
-                          <span class="sr-only">60% Complete</span>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="w_right w_20">
-                      <span>123k</span>
-                    </div>
-                    <div class="clearfix"></div>
-                  </div>
 
-                  <div class="widget_summary">
-                    <div class="w_left w_25">
-                      <span>0.1.5.3</span>
-                    </div>
-                    <div class="w_center w_55">
-                      <div class="progress">
-                        <div class="progress-bar bg-green" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 45%;">
-                          <span class="sr-only">60% Complete</span>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="w_right w_20">
-                      <span>53k</span>
-                    </div>
-                    <div class="clearfix"></div>
-                  </div>
-                  <div class="widget_summary">
-                    <div class="w_left w_25">
-                      <span>0.1.5.4</span>
-                    </div>
-                    <div class="w_center w_55">
-                      <div class="progress">
-                        <div class="progress-bar bg-green" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 25%;">
-                          <span class="sr-only">60% Complete</span>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="w_right w_20">
-                      <span>23k</span>
-                    </div>
-                    <div class="clearfix"></div>
-                  </div>
-                  <div class="widget_summary">
-                    <div class="w_left w_25">
-                      <span>0.1.5.5</span>
-                    </div>
-                    <div class="w_center w_55">
-                      <div class="progress">
-                        <div class="progress-bar bg-green" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 5%;">
-                          <span class="sr-only">60% Complete</span>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="w_right w_20">
-                      <span>3k</span>
-                    </div>
-                    <div class="clearfix"></div>
-                  </div>
-                  <div class="widget_summary">
-                    <div class="w_left w_25">
-                      <span>0.1.5.6</span>
-                    </div>
-                    <div class="w_center w_55">
-                      <div class="progress">
-                        <div class="progress-bar bg-green" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 2%;">
-                          <span class="sr-only">60% Complete</span>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="w_right w_20">
-                      <span>1k</span>
-                    </div>
-                    <div class="clearfix"></div>
-                  </div>
-
-                </div>
-              </div>
-            </div>
-
-            <div class="col-md-4 col-sm-4 col-xs-12">
-              <div class="x_panel tile fixed_height_320 overflow_hidden">
-                <div class="x_title">
-                  <h2>Device Usage</h2>
-                  <ul class="nav navbar-right panel_toolbox">
-                    <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                    </li>
-                    <li class="dropdown">
-                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
-                      <ul class="dropdown-menu" role="menu">
-                        <li><a href="#">Settings 1</a>
-                        </li>
-                        <li><a href="#">Settings 2</a>
-                        </li>
-                      </ul>
-                    </li>
-                    <li><a class="close-link"><i class="fa fa-close"></i></a>
-                    </li>
-                  </ul>
-                  <div class="clearfix"></div>
-                </div>
-                <div class="x_content">
-                  <table class="" style="width:100%">
-                    <tr>
-                      <th style="width:37%;">
-                        <p>Top 5</p>
-                      </th>
-                      <th>
-                        <div class="col-lg-7 col-md-7 col-sm-7 col-xs-7">
-                          <p class="">Device</p>
-                        </div>
-                        <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
-                          <p class="">Progress</p>
-                        </div>
-                      </th>
-                    </tr>
-                    <tr>
-                      <td>
-                        <canvas id="canvas1" height="140" width="140" style="margin: 15px 10px 10px 0"></canvas>
-                      </td>
-                      <td>
-                        <table class="tile_info">
-                          <tr>
-                            <td>
-                              <p><i class="fa fa-square blue"></i>IOS </p>
-                            </td>
-                            <td>30%</td>
-                          </tr>
-                          <tr>
-                            <td>
-                              <p><i class="fa fa-square green"></i>Android </p>
-                            </td>
-                            <td>10%</td>
-                          </tr>
-                          <tr>
-                            <td>
-                              <p><i class="fa fa-square purple"></i>Blackberry </p>
-                            </td>
-                            <td>20%</td>
-                          </tr>
-                          <tr>
-                            <td>
-                              <p><i class="fa fa-square aero"></i>Symbian </p>
-                            </td>
-                            <td>15%</td>
-                          </tr>
-                          <tr>
-                            <td>
-                              <p><i class="fa fa-square red"></i>Others </p>
-                            </td>
-                            <td>30%</td>
-                          </tr>
-                        </table>
-                      </td>
-                    </tr>
-                  </table>
-                </div>
-              </div>
-            </div>
-
-
-            <div class="col-md-4 col-sm-4 col-xs-12">
-              <div class="x_panel tile fixed_height_320">
-                <div class="x_title">
-                  <h2>Quick Settings</h2>
-                  <ul class="nav navbar-right panel_toolbox">
-                    <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                    </li>
-                    <li class="dropdown">
-                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
-                      <ul class="dropdown-menu" role="menu">
-                        <li><a href="#">Settings 1</a>
-                        </li>
-                        <li><a href="#">Settings 2</a>
-                        </li>
-                      </ul>
-                    </li>
-                    <li><a class="close-link"><i class="fa fa-close"></i></a>
-                    </li>
-                  </ul>
-                  <div class="clearfix"></div>
-                </div>
-                <div class="x_content">
-                  <div class="dashboard-widget-content">
-                    <ul class="quick-list">
-                      <li><i class="fa fa-calendar-o"></i><a href="#">Settings</a>
-                      </li>
-                      <li><i class="fa fa-bars"></i><a href="#">Subscription</a>
-                      </li>
-                      <li><i class="fa fa-bar-chart"></i><a href="#">Auto Renewal</a> </li>
-                      <li><i class="fa fa-line-chart"></i><a href="#">Achievements</a>
-                      </li>
-                      <li><i class="fa fa-bar-chart"></i><a href="#">Auto Renewal</a> </li>
-                      <li><i class="fa fa-line-chart"></i><a href="#">Achievements</a>
-                      </li>
-                      <li><i class="fa fa-area-chart"></i><a href="#">Logout</a>
-                      </li>
-                    </ul>
-
-                    <div class="sidebar-widget">
-                      <h4>Profile Completion</h4>
-                      <canvas width="150" height="80" id="foo" class="" style="width: 160px; height: 100px;"></canvas>
-                      <div class="goal-wrapper">
-                        <span class="gauge-value pull-left">$</span>
-                        <span id="gauge-text" class="gauge-value pull-left">3,200</span>
-                        <span id="goal-text" class="goal-value pull-right">$5,000</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div> -->
 
           </div>
-
-
-          <!--<div class="row">-->
-            <!--<div class="col-md-4 col-sm-4 col-xs-12">-->
-              <!--&lt;!&ndash;<div class="x_panel">&ndash;&gt;-->
-                <!--&lt;!&ndash;&lt;!&ndash;<div class="x_title">&ndash;&gt;&ndash;&gt;-->
-                  <!--&lt;!&ndash;&lt;!&ndash;<h2>Recent Activities <small>Sessions</small></h2>&ndash;&gt;&ndash;&gt;-->
-                  <!--&lt;!&ndash;&lt;!&ndash;<ul class="nav navbar-right panel_toolbox">&ndash;&gt;&ndash;&gt;-->
-                    <!--&lt;!&ndash;&lt;!&ndash;<li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>&ndash;&gt;&ndash;&gt;-->
-                    <!--&lt;!&ndash;&lt;!&ndash;</li>&ndash;&gt;&ndash;&gt;-->
-                    <!--&lt;!&ndash;&lt;!&ndash;<li class="dropdown">&ndash;&gt;&ndash;&gt;-->
-                      <!--&lt;!&ndash;&lt;!&ndash;<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>&ndash;&gt;&ndash;&gt;-->
-                      <!--&lt;!&ndash;&lt;!&ndash;<ul class="dropdown-menu" role="menu">&ndash;&gt;&ndash;&gt;-->
-                        <!--&lt;!&ndash;&lt;!&ndash;<li><a href="#">Settings 1</a>&ndash;&gt;&ndash;&gt;-->
-                        <!--&lt;!&ndash;&lt;!&ndash;</li>&ndash;&gt;&ndash;&gt;-->
-                        <!--&lt;!&ndash;&lt;!&ndash;<li><a href="#">Settings 2</a>&ndash;&gt;&ndash;&gt;-->
-                        <!--&lt;!&ndash;&lt;!&ndash;</li>&ndash;&gt;&ndash;&gt;-->
-                      <!--&lt;!&ndash;&lt;!&ndash;</ul>&ndash;&gt;&ndash;&gt;-->
-                    <!--&lt;!&ndash;&lt;!&ndash;</li>&ndash;&gt;&ndash;&gt;-->
-                    <!--&lt;!&ndash;&lt;!&ndash;<li><a class="close-link"><i class="fa fa-close"></i></a>&ndash;&gt;&ndash;&gt;-->
-                    <!--&lt;!&ndash;&lt;!&ndash;</li>&ndash;&gt;&ndash;&gt;-->
-                  <!--&lt;!&ndash;&lt;!&ndash;</ul>&ndash;&gt;&ndash;&gt;-->
-                  <!--&lt;!&ndash;&lt;!&ndash;<div class="clearfix"></div>&ndash;&gt;&ndash;&gt;-->
-                <!--&lt;!&ndash;&lt;!&ndash;</div>&ndash;&gt;&ndash;&gt;-->
-                <!--&lt;!&ndash;<div class="x_content">&ndash;&gt;-->
-                  <!--&lt;!&ndash;<div class="dashboard-widget-content">&ndash;&gt;-->
-
-                    <!--&lt;!&ndash;<ul class="list-unstyled timeline widget">&ndash;&gt;-->
-                      <!--&lt;!&ndash;&lt;!&ndash; <li>&ndash;&gt;-->
-                        <!--&lt;!&ndash;<div class="block">&ndash;&gt;-->
-                          <!--&lt;!&ndash;<div class="block_content">&ndash;&gt;-->
-                            <!--&lt;!&ndash;<h2 class="title">&ndash;&gt;-->
-                                              <!--&lt;!&ndash;<a>Tips for increasing profitability on your farm in 2017</a>&ndash;&gt;-->
-                                          <!--&lt;!&ndash;</h2>&ndash;&gt;-->
-                            <!--&lt;!&ndash;<div class="byline">&ndash;&gt;-->
-                              <!--&lt;!&ndash;<span>13 hours ago</span> by <a>Ken Hilton</a>&ndash;&gt;-->
-                            <!--&lt;!&ndash;</div>&ndash;&gt;-->
-                            <!--&lt;!&ndash;<p class="excerpt">The Red Wing Software team works with farms around the U.S. every day. And the one conversation that often comes to surface during our conversations is about best management practices for growth on the farm. This is a very timely topic with the start of a new year approaching, as every farming operation should be considering how to make the new year more profitable than the last. While the conversation initially centers on farm accounting software, it quickly becomes clear that the focus really revolves around systems and processes.</a>&ndash;&gt;-->
-                            <!--&lt;!&ndash;</p>&ndash;&gt;-->
-                          <!--&lt;!&ndash;</div>&ndash;&gt;-->
-                        <!--&lt;!&ndash;</div>&ndash;&gt;-->
-                      <!--&lt;!&ndash;</li> &ndash;&gt;&ndash;&gt;-->
-                      <!--&lt;!&ndash;<li>&ndash;&gt;-->
-                        <!--&lt;!&ndash;<div class="block">&ndash;&gt;-->
-                          <!--&lt;!&ndash;<div class="block_content">&ndash;&gt;-->
-                            <!--&lt;!&ndash;<h2 class="title">&ndash;&gt;-->
-                                              <!--&lt;!&ndash;<a>Canada's 150th celebrated with agriculture technology</a>&ndash;&gt;-->
-                                          <!--&lt;!&ndash;</h2>&ndash;&gt;-->
-                            <!--&lt;!&ndash;<div class="byline">&ndash;&gt;-->
-                              <!--&lt;!&ndash;<span>13 hours ago</span> by <a>Jane Smith</a>&ndash;&gt;-->
-                            <!--&lt;!&ndash;</div>&ndash;&gt;-->
-                            <!--&lt;!&ndash;<p class="excerpt">It will have been 150 years since Canada's confederacy in 1867 when 2017 rolls around. <br>&ndash;&gt;-->
-
-<!--&lt;!&ndash;Agriculture and Agri-Food Canada are celebrating the milestone through agriculture technology and an iconic symbol: the maple leaf.<br>&ndash;&gt;-->
-
-<!--&lt;!&ndash;The project used GPS technology to program a combine's route on a farm's durum wheat crop in Wilcox, Sask. The combine automatically calculated the route once the coordinates were input, allowing the operator to manage the operation hands-free.<a>Read&nbsp;More</a>&ndash;&gt;-->
-                            <!--&lt;!&ndash;</p>&ndash;&gt;-->
-                          <!--&lt;!&ndash;</div>&ndash;&gt;-->
-                        <!--&lt;!&ndash;</div>&ndash;&gt;-->
-                      <!--&lt;!&ndash;</li>&ndash;&gt;-->
-                      <!--&lt;!&ndash;<li>&ndash;&gt;-->
-                        <!--&lt;!&ndash;<div class="block">&ndash;&gt;-->
-                          <!--&lt;!&ndash;<div class="block_content">&ndash;&gt;-->
-                            <!--&lt;!&ndash;<h2 class="title">&ndash;&gt;-->
-                                              <!--&lt;!&ndash;<a>Efficient Water usage in Farming</a>&ndash;&gt;-->
-                                          <!--&lt;!&ndash;</h2>&ndash;&gt;-->
-                            <!--&lt;!&ndash;<div class="byline">&ndash;&gt;-->
-                              <!--&lt;!&ndash;<span>13 hours ago</span> by <a>Jane Smith</a>&ndash;&gt;-->
-                            <!--&lt;!&ndash;</div>&ndash;&gt;-->
-                            <!--&lt;!&ndash;<p class="excerpt">Find out best practicises to maximize effective water usage in Agriculture… <a>Read&nbsp;More</a>&ndash;&gt;-->
-                            <!--&lt;!&ndash;</p>&ndash;&gt;-->
-                          <!--&lt;!&ndash;</div>&ndash;&gt;-->
-                        <!--&lt;!&ndash;</div>&ndash;&gt;-->
-                      <!--&lt;!&ndash;</li>&ndash;&gt;-->
-<!--&lt;!&ndash;&lt;!&ndash;                       <li>&ndash;&gt;-->
-                        <!--&lt;!&ndash;<div class="block">&ndash;&gt;-->
-                          <!--&lt;!&ndash;<div class="block_content">&ndash;&gt;-->
-                            <!--&lt;!&ndash;<h2 class="title">&ndash;&gt;-->
-                                              <!--&lt;!&ndash;<a>Who Needs Sundance When You’ve Got&nbsp;Crowdfunding?</a>&ndash;&gt;-->
-                                          <!--&lt;!&ndash;</h2>&ndash;&gt;-->
-                            <!--&lt;!&ndash;<div class="byline">&ndash;&gt;-->
-                              <!--&lt;!&ndash;<span>13 hours ago</span> by <a>Jane Smith</a>&ndash;&gt;-->
-                            <!--&lt;!&ndash;</div>&ndash;&gt;-->
-                            <!--&lt;!&ndash;<p class="excerpt">Film festivals used to be do-or-die moments for movie makers. They were where you met the producers that could fund your project, and if the buyers liked your flick, they’d pay to Fast-forward and… <a>Read&nbsp;More</a>&ndash;&gt;-->
-                            <!--&lt;!&ndash;</p>&ndash;&gt;-->
-                          <!--&lt;!&ndash;</div>&ndash;&gt;-->
-                        <!--&lt;!&ndash;</div>&ndash;&gt;-->
-                      <!--&lt;!&ndash;</li> &ndash;&gt;&ndash;&gt;-->
-                    <!--&lt;!&ndash;</ul>&ndash;&gt;-->
-                  <!--&lt;!&ndash;</div>&ndash;&gt;-->
-                <!--&lt;!&ndash;</div>&ndash;&gt;-->
-              <!--&lt;!&ndash;</div>&ndash;&gt;-->
-            <!--&lt;!&ndash;</div>&ndash;&gt;-->
-
-
-            <!--<div class="col-md-8 col-sm-8 col-xs-12">-->
-
-
-
-              <!--&lt;!&ndash;<div class="row">&ndash;&gt;-->
-
-                <!--&lt;!&ndash;<div class="col-md-12 col-sm-12 col-xs-12">&ndash;&gt;-->
-                  <!--&lt;!&ndash;<div class="x_panel">&ndash;&gt;-->
-                    <!--&lt;!&ndash;<div class="x_title">&ndash;&gt;-->
-                      <!--&lt;!&ndash;<h2>Farm-field Location <small>geo-presentation</small></h2>&ndash;&gt;-->
-                      <!--&lt;!&ndash;<ul class="nav navbar-right panel_toolbox">&ndash;&gt;-->
-                        <!--&lt;!&ndash;<li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>&ndash;&gt;-->
-                        <!--&lt;!&ndash;</li>&ndash;&gt;-->
-                        <!--&lt;!&ndash;<li class="dropdown">&ndash;&gt;-->
-                          <!--&lt;!&ndash;<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>&ndash;&gt;-->
-                          <!--&lt;!&ndash;<ul class="dropdown-menu" role="menu">&ndash;&gt;-->
-                            <!--&lt;!&ndash;<li><a href="#">Settings 1</a>&ndash;&gt;-->
-                            <!--&lt;!&ndash;</li>&ndash;&gt;-->
-                            <!--&lt;!&ndash;<li><a href="#">Settings 2</a>&ndash;&gt;-->
-                            <!--&lt;!&ndash;</li>&ndash;&gt;-->
-                          <!--&lt;!&ndash;</ul>&ndash;&gt;-->
-                        <!--&lt;!&ndash;</li>&ndash;&gt;-->
-                        <!--&lt;!&ndash;<li><a class="close-link"><i class="fa fa-close"></i></a>&ndash;&gt;-->
-                        <!--&lt;!&ndash;</li>&ndash;&gt;-->
-                      <!--&lt;!&ndash;</ul>&ndash;&gt;-->
-                      <!--&lt;!&ndash;<div class="clearfix"></div>&ndash;&gt;-->
-                    <!--&lt;!&ndash;</div>&ndash;&gt;-->
-                    <!--&lt;!&ndash;<div class="x_content">&ndash;&gt;-->
-                      <!--&lt;!&ndash;<div class="dashboard-widget-content">&ndash;&gt;-->
-<!--&lt;!&ndash;                         <div class="col-md-4 hidden-small">-->
-                          <!--<h2 class="line_30">125.7k Views from 60 countries</h2>-->
-
-                          <!--<table class="countries_list">-->
-                            <!--<tbody>-->
-                              <!--<tr>-->
-                                <!--<td>United States</td>-->
-                                <!--<td class="fs15 fw700 text-right">33%</td>-->
-                              <!--</tr>-->
-                              <!--<tr>-->
-                                <!--<td>France</td>-->
-                                <!--<td class="fs15 fw700 text-right">27%</td>-->
-                              <!--</tr>-->
-                              <!--<tr>-->
-                                <!--<td>Germany</td>-->
-                                <!--<td class="fs15 fw700 text-right">16%</td>-->
-                              <!--</tr>-->
-                              <!--<tr>-->
-                                <!--<td>Spain</td>-->
-                                <!--<td class="fs15 fw700 text-right">11%</td>-->
-                              <!--</tr>-->
-                              <!--<tr>-->
-                                <!--<td>Britain</td>-->
-                                <!--<td class="fs15 fw700 text-right">10%</td>-->
-                              <!--</tr>-->
-                            <!--</tbody>-->
-                          <!--</table>-->
-                        <!--</div> &ndash;&gt;-->
-                        <!--&lt;!&ndash;<div id="world-map-gdp" class="col-md-12 col-sm-12 col-xs-12" style="height:230px;"></div>&ndash;&gt;-->
-                      <!--&lt;!&ndash;</div>&ndash;&gt;-->
-                    <!--</div>-->
-                  <!--</div>-->
-                <!--</div>-->
-
-              <!--</div>-->
               <div class="row">
 
 
@@ -805,26 +406,7 @@
                             <p>
                               <input type="checkbox" class="flat"> Plan for next seasonal crop</p>
                           </li>
-          <!--                 <li>
-                            <p>
-                              <input type="checkbox" class="flat"> Food truck fixie locavors mcsweeney</p>
-                          </li>
-                          <li>
-                            <p>
-                              <input type="checkbox" class="flat"> Food truck fixie locavors mcsweeney</p>
-                          </li>
-                          <li>
-                            <p>
-                              <input type="checkbox" class="flat"> Create email address for new intern</p>
-                          </li>
-                          <li>
-                            <p>
-                              <input type="checkbox" class="flat"> Have IT fix the network printer</p>
-                          </li>
-                          <li>
-                            <p>
-                              <input type="checkbox" class="flat"> Copy backups to offsite location</p>
-                          </li> -->
+
                         </ul>
                       </div>
                     </div>
@@ -989,7 +571,7 @@
         <!-- footer content -->
         <footer>
           <div class="pull-right">
-            <a href="http://www.foris.io">Foris.io</a>
+            <a href="http://www.foris.io">foris.io</a>
           </div>
           <div class="clearfix"></div>
         </footer>
@@ -1037,150 +619,252 @@
 
     <!-- Custom Theme Scripts -->
     <script src="/javascripts/custom.min.js"></script>
-
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
     <!--Sensor chart start-->
     <script>
 //        var app = angular.module("forisApp", []);
 //        app.controller("chartCtrl", ['$scope', function( $scope) {
-            $.getJSON('http://foris.mybluemix.net/HelloWorld?q=webapp_token_many', function (data) {
+                $.getJSON('/sensordata', function (data) {
 
                 //Finding average readings
                 var avg_moisture = 0,
                     avg_temp = 0,
                     avg_salinity = 0,
-                    avg_pH = 0;
+                    avg_pH = 0,
+                    avg_humidity = 0;
 
+                var timestamp = []; //creating moisture dictionary
                 var moisture = []; //creating moisture dictionary
+                var temperature = []; //creating Temperature dictionary
+                var salinity = []; //creating Salinity dictionary
+                var humidity = []; //creating Humidity dictionary
+                var pH = []; //creating pH dictionary
+
                 for (var i = 0; i < data.length; i++) {
-                    var d1 = data[i];
-                    var dattime = d1["timestamp"];  //datetime
-                    dattime = new Date(Date.UTC(dattime.substring(0, 4), (dattime.substring(5, 7) - 1), dattime.substring(8, 10), dattime.substring(11, 13), dattime.substring(14, 16)));
-                    var d2 = d1["sensor"];
-                    var val = d2["Moisture"];
-                    moisture.push({
-                        x: dattime, y: val
-                    });
-                    avg_moisture = avg_moisture + val;
+                     var dattime = data[i].TimeStamp;  //datetime
+                     dattime = new Date(Date.UTC(dattime.substring(0, 4), (dattime.substring(5, 7) - 1), dattime.substring(8, 10), dattime.substring(11, 13), dattime.substring(14, 16), dattime.substring(17, 19)));
+                     timestamp.push(dattime);
+
+                    var valm = data[i].Moisture;  //Sensor value
+                    moisture.push(valm);
+                    avg_moisture = avg_moisture + valm;
+
+                    var valt = Math.round(data[i].Temperature * 9 / 5 + 32) ;  //Sensor value
+                    temperature.push(valt);
+                    avg_temp = avg_temp + valt;
+
+                    var vals = data[i].Salinity;  //Sensor value
+                    salinity.push(vals);
+                    avg_salinity = avg_salinity + vals;
+
+                    var valh = data[i].Humidity;  //Sensor value
+                    humidity.push(valh);
+                    avg_humidity = avg_humidity + valh;
+
+
                 }
+
                 if (data.length != 0) {
                     avg_moisture = (avg_moisture / data.length);
                     document.getElementById("avg_moisture").innerHTML = avg_moisture.toFixed(2);
 
-                }
-
-
-                var temperature = []; //creating Temperature dictionary
-                for (var i = 0; i < data.length; i++) {
-                    var d1 = data[i];
-                    var dattime = d1["timestamp"];  //datetime
-                    dattime = new Date(Date.UTC(dattime.substring(0, 4), (dattime.substring(5, 7) - 1), dattime.substring(8, 10), dattime.substring(11, 13), dattime.substring(14, 16)));
-                    var d2 = d1["sensor"];
-                    var val = d2["Temperature"];
-                    temperature.push({
-                        x: dattime, y: val
-                    });
-                    avg_temp = avg_temp + val;
-                }
-                if (data.length != 0) {
                     avg_temp = (avg_temp / data.length);
                     document.getElementById("avg_temperature").innerHTML = avg_temp.toFixed(2) + " &#8457;";
-                }
 
-                var salinity = []; //creating Salinity dictionary
-                for (var i = 0; i < data.length; i++) {
-                    var d1 = data[i];
-                    var dattime = d1["timestamp"];  //datetime
-                    dattime = new Date(Date.UTC(dattime.substring(0, 4), (dattime.substring(5, 7) - 1), dattime.substring(8, 10), dattime.substring(11, 13), dattime.substring(14, 16)));
-                    var d2 = d1["sensor"];
-                    var val = d2["Salinity"];
-                    salinity.push({
-                        x: dattime, y: val
-                    });
-                    avg_salinity = avg_salinity + val;
-                }
-                if (data.length != 0) {
                     avg_salinity = (avg_salinity / data.length);
                     document.getElementById("avg_salinity").innerHTML = avg_salinity.toFixed(2);
+
+                    avg_humidity = (avg_humidity / data.length);
+                    document.getElementById("avg_humidity").innerHTML = avg_humidity.toFixed(2);
+
                 }
 
-                var pH = []; //creating pH dictionary
-                for (var i = 0; i < data.length; i++) {
-                    var d1 = data[i];
-                    var dattime = d1["timestamp"];  //datetime
-                    dattime = new Date(Date.UTC(dattime.substring(0, 4), (dattime.substring(5, 7) - 1), dattime.substring(8, 10), dattime.substring(11, 13), dattime.substring(14, 16)));
-                    var d2 = d1["sensor"];
-                    var val = d2["Ph"];
-                    pH.push({
-                        x: dattime, y: val
-                    });
-                    avg_pH = avg_pH + val;
-                }
-                if (data.length != 0) {
-                    avg_pH = (avg_pH / data.length);
-//                    document.getElementById("avg_pH").innerHTML = avg_pH.toFixed(2);
-                }
+                    //                var moisture = []; //creating moisture dictionary
+//                for (var i = 0; i < data.length; i++) {
+//                    var dattime = data[i].TimeStamp;  //datetime
+//                    dattime = new Date(Date.UTC(dattime.substring(0, 4), (dattime.substring(5, 7) - 1), dattime.substring(8, 10), dattime.substring(11, 13), dattime.substring(14, 16), dattime.substring(17, 19)));
+//
+//                    var val = data[i].Moisture;  //Sensor value
+//                    moisture.push(val);
+//                    avg_moisture = avg_moisture + val;
+//                }
 
-                var chart = new CanvasJS.Chart("chartContainer",
-                    {
+
+//                var temperature = []; //creating Temperature dictionary
+//                for (var i = 0; i < data.length; i++) {
+//                    var dattime = data[i].TimeStamp;  //datetime
+//                    dattime = new Date(Date.UTC(dattime.substring(0, 4), (dattime.substring(5, 7) - 1), dattime.substring(8, 10), dattime.substring(11, 13), dattime.substring(14, 16), dattime.substring(17, 19)));
+//                    var val = Math.round(data[i].Temperature * 9 / 5 + 32) ;  //Sensor value
+//                    temperature.push(val);
+//                    avg_temp = avg_temp + val;
+//                }
+//                if (data.length != 0) {
+//                    avg_temp = (avg_temp / data.length);
+//                    document.getElementById("avg_temperature").innerHTML = avg_temp.toFixed(2) + " &#8457;";
+//                }
+
+//                var salinity = []; //creating Salinity dictionary
+//                for (var i = 0; i < data.length; i++) {
+//                    var dattime = data[i].TimeStamp;  //datetime
+//                    dattime = new Date(Date.UTC(dattime.substring(0, 4), (dattime.substring(5, 7) - 1), dattime.substring(8, 10), dattime.substring(11, 13), dattime.substring(14, 16), dattime.substring(17, 19)));
+//                    var val = data[i].Salinity;  //Sensor value
+//                    salinity.push(val);
+//                    avg_salinity = avg_salinity + val;
+//                }
+//                if (data.length != 0) {
+//                    avg_salinity = (avg_salinity / data.length);
+//                    document.getElementById("avg_salinity").innerHTML = avg_salinity.toFixed(2);
+//                }
+
+//                var pH = []; //creating pH dictionary
+//                for (var i = 0; i < data.length; i++) {
+//                    var dattime = data[i].TimeStamp;  //datetime
+//                    dattime = new Date(Date.UTC(dattime.substring(0, 4), (dattime.substring(5, 7) - 1), dattime.substring(8, 10), dattime.substring(11, 13), dattime.substring(14, 16), dattime.substring(17, 19)));
+//                    var val = data[i].pH;  //Sensor value
+//                    pH.push(val);
+//                    avg_pH = avg_pH + val;
+//                }
+//                if (data.length != 0) {
+//                    avg_pH = (avg_pH / data.length);
+////                    document.getElementById("avg_pH").innerHTML = avg_pH.toFixed(2);
+//                }
+
+//                    var humidity = []; //creating Humidity dictionary
+//                    for (var i = 0; i < data.length; i++) {
+//                      var d1 = data[i];
+//                      var dattime = data[i].TimeStamp;  //datetime
+//                      dattime = new Date(Date.UTC(dattime.substring(0, 4), (dattime.substring(5, 7) - 1), dattime.substring(8, 10), dattime.substring(11, 13), dattime.substring(14, 16), dattime.substring(17, 19)));
+//                      var val = data[i].Humidity;  //Sensor value
+//                        humidity.push(val);
+//                      avg_humidity = avg_humidity + val;
+//                      }
+//                      if (data.length != 0) {
+//                      avg_humidity = (avg_humidity / data.length);
+//                      document.getElementById("avg_humidity").innerHTML = avg_humidity.toFixed(2);
+//                       }
+
+
+
+                    Highcharts.chart('chartContainer', {
+                        chart: {
+                            zoomType: 'xy'
+                        },
                         title: {
-                            text: "Sensor Readings",
+                            text: 'Sensor Readings'
                         },
+                        xAxis: [{
+                            categories: timestamp,
+                            crosshair: true
+                        }],
+                        yAxis: [{ // Primary yAxis
+                            labels: {
+                                format: '{value}°F',
+                                style: {
+                                    color: Highcharts.getOptions().colors[2]
+                                }
+                            },
+                            title: {
+                                text: 'Temperature',
+                                style: {
+                                    color: Highcharts.getOptions().colors[2]
+                                }
+                            },
+                            opposite: true
 
-                        axisX: {
-                            title: "Date Time",
-                            gridThickness: 2,
-                            interval: 2,
-                            intervalType: "seconds",
-                            valueFormatString: "HH mm ss",
-                            xValueType: "dateTime",
-                            labelAngle: -20
-                        },
-                        toolTip: {
+                        }, { // Secondary yAxis
+                            gridLineWidth: 0,
+                            title: {
+                                text: 'Salinity',
+                                style: {
+                                    color: Highcharts.getOptions().colors[0]
+                                }
+                            },
+                            labels: {
+                                format: '{value}',
+                                style: {
+                                    color: Highcharts.getOptions().colors[0]
+                                }
+                            }
+
+                        }, { // Tertiary yAxis
+                            gridLineWidth: 0,
+                            title: {
+                                text: 'Salinity',
+                                style: {
+                                    color: Highcharts.getOptions().colors[1]
+                                }
+                            },
+                            labels: {
+                                format: '{value}',
+                                style: {
+                                    color: Highcharts.getOptions().colors[1]
+                                }
+                            },
+
+                            opposite: true
+                        }],
+                        tooltip: {
                             shared: true
                         },
-                        axisY: {
-                            title: "scale"
+                        legend: {
+                            layout: 'vertical',
+                            align: 'left',
+                            x: 80,
+                            verticalAlign: 'top',
+                            y: 55,
+                            floating: true,
+                            backgroundColor: (Highcharts.theme && Highcharts.theme.legendBackgroundColor) || '#FFFFFF'
                         },
-                        data: [
-                            {
-                                type: "line",
-                                showInLegend: true,
-                                lineThickness: 2,
-                                name: "Temperature",
-                                markerType: "square",
-                                color: "#F08080",
-                                dataPoints: temperature
+                        series: [ {
+                            name: 'Moisture',
+                            type: 'spline',
+                            yAxis: 2,
+                            data: moisture,
+                            marker: {
+                                enabled: false
                             },
-                            {
-                                type: "line",
-                                showInLegend: true,
-                                name: "Moisture",
-                                color: "#20B2AA",
-                                lineThickness: 2,
-                                dataPoints: moisture
-                            },
-                            {
-                                type: "line",
-                                showInLegend: true,
-                                name: "pH",
-                                color: "#C71585",
-                                lineThickness: 2,
-                                dataPoints: pH
-                            },
-                            {
-                                type: "line",
-                                showInLegend: true,
-                                name: "Salinity",
-                                color: "#FF5733",
-                                lineThickness: 2,
-                                dataPoints: salinity
+                            dashStyle: 'shortdot',
+                            tooltip: {
+//                                valueSuffix: ' mb'
                             }
+
+                        }, {
+                            name: 'Salinity',
+                            type: 'spline',
+                            yAxis: 1,
+                            data: salinity,
+                            tooltip: {
+//                                valueSuffix: ' mm'
+                            }
+
+                        },{
+                            name: 'Temperature',
+                            type: 'spline',
+                            data: temperature,
+                            tooltip: {
+                                valueSuffix: ' °F'
+                            }
+                        },
+                            {
+                            name: 'Humidity',
+                            type: 'spline',
+                            yAxis: 2,
+                            data: humidity,
+                            marker: {
+                                enabled: false
+                            },
+                            dashStyle: 'shortdot',
+                            tooltip: {
+                                valueSuffix: ' %'
+                            }
+
+                        }
                         ]
                     });
 
-                chart.render();
 
-            });
+                });
 
 //        }]);
 

@@ -279,10 +279,10 @@
             </li>
 
             <li role="presentation" class="dropdown">
-              <a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
-                <i class="fa fa-envelope-o"></i>
-                <span class="badge bg-green"></span>
-              </a>
+              <!--<a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">-->
+                <!--<i class="fa fa-envelope-o"></i>-->
+                <!--<span class="badge bg-green"></span>-->
+              <!--</a>-->
               <ul id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu">
                 <li>
                   <a>
@@ -831,7 +831,7 @@
   <!-- footer content -->
   <footer>
     <div class="pull-right">
-      <a href="http://www.foris.io">Foris.io</a>
+      <a href="http://www.foris.io">foris.io</a>
     </div>
     <div class="clearfix"></div>
   </footer>
@@ -860,7 +860,8 @@
         var data_point = []; //creating sensor value dictionary
         for (var i = 0; i < data.length; i++) {
             var dattime = data[i].TimeStamp;  //datetime
-            dattime = new Date(Date.UTC(dattime.substring(0, 4), (dattime.substring(5, 7) - 1), dattime.substring(8, 10), dattime.substring(11, 13), dattime.substring(14, 16)));
+            dattime = new Date(Date.UTC(dattime.substring(0, 4), (dattime.substring(5, 7) - 1), dattime.substring(8, 10), dattime.substring(11, 13), dattime.substring(14, 16), dattime.substring(17, 19)));
+
             var d2 = data[i];
             var val = d2["<%= json_name%>"];  //Sensor value
 
@@ -879,8 +880,8 @@
                 axisX: {
                     title: "Date Time",
                     gridThickness: 2,
-                    interval: 2,
-                    intervalType: "seconds",
+                    interval: 50,
+                    intervalType: "minutes",
                     valueFormatString: "HH mm ss",
                     xValueType: "dateTime",
                     labelAngle: -20
@@ -910,5 +911,6 @@
 </script>
 <script type="text/javascript" src="/javascripts/canvasjs.min.js"></script>
 <!--Sensor chart end-->
+</div>
 </body>
 </html>

@@ -5,10 +5,8 @@
 module.exports = {
     // foris_users: 'foris_users', // DB name in cloudant for foris users
     // sensor_db: 'sensor_data', //database for sensors in cloudant
-    // username: 'e15bb68f-18b5-4ae3-983c-41756e9111f2-bluemix', // username for DB
-    // password: '86db8b1c9e69f48e5c1afb07a4db2f7b6dba621025ee7e0514442eb1f6b79227', // password for DB
-    username: 'foris', // username for DB
-    password: 'grover2014', // password for DB
+    username: '474306cf-8215-4090-879c-4fb2f25624a6-bluemix', // username for DB
+    password: 'a0807af23864f72d10fc698e9d5e2a2a739411860d67625aabf73061d22acccd', // password for DB
     foris_users: 'foris_users', // DB name in cloudant for foris users
     sensor_db: 'sensor-data', //database for sensors in cloudant
     page_title: 'foris-io' // page title

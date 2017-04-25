@@ -198,22 +198,44 @@ exports.sensordata = function(req, res){
             });
         } else {
             console.log("Printing sensor data in loop");
+
             results.rows.forEach(function(doc){
 
                 console.log(doc["doc"].data);
 
-                res_dict.push({
-                    "TimeStamp":doc["doc"].TimeStamp,
-                    "Temperature":doc["doc"].data.temperature,
-                    "Humidity":doc["doc"].data.humidity,
-                    "Moisture":doc["doc"].data.moisture,
-                    "Salinity":doc["doc"].data.salinity,
-                });
+                var dattime = doc["doc"].TimeStamp;
+                var timestamp = new Date(Date.UTC(dattime.substring(0, 4), (dattime.substring(5, 7) - 1), dattime.substring(8, 10), dattime.substring(11, 13), dattime.substring(14, 16), dattime.substring(17, 19) ));
+
+
+
+                if(doc["doc"].data.temperature > 0) {
+                    res_dict.push({
+                        "TimeStamp": doc["doc"].TimeStamp,
+                        "DateTime": timestamp,
+                        "Temperature": doc["doc"].data.temperature,
+                        "Humidity": doc["doc"].data.humidity,
+                        "Moisture": doc["doc"].data.moisture,
+                        "Salinity": doc["doc"].data.salinity,
+                    });
+                }
+
+
             });
 
-            // var jsonstr=JSON.stringify(results);
-            // // var data = JSON.parse(results);
-            // console.log(jsonstr);
+            // res_dict.sort(dynamicSort("DateTime"));
+            res_dict.sort(function(a, b) {
+                return parseFloat(a.DateTime) - parseFloat(b.DateTime);
+            });
+
+            function compare(a,b) {
+                if (a.DateTime < b.DateTime)
+                    return -1;
+                if (a.DateTime > b.DateTime)
+                    return 1;
+                return 0;
+            }
+
+            res_dict.sort(compare);
             res.send(res_dict);
         }
     }, variables.sensor_db);
