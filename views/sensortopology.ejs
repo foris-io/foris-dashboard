@@ -9,10 +9,6 @@
       <meta name="viewport" content="width=device-width, initial-scale=1">
 
       <title>foris-io</title>
-
-
-
-
         <link rel="stylesheet" href="/sensortopology/next/dest/css/next.css">
         <script src="/sensortopology/next/dest/js/next.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
@@ -47,7 +43,10 @@
                 alert("error");
                 })
                 .done(function(result) {
-                    sensorData = result;
+                sensorData = result;
+
+
+
                 var links = [];
                 var nodes = [];
                 var count = 50;
@@ -59,6 +58,8 @@
                 nodes.push(nodesObject);
 
                 var i =0;
+                var n = sensorData.rows.length;
+
 
                 for (i = 0; i < datares.rows.length; i++) {
 
@@ -68,10 +69,10 @@
                     nodesObject["name"] = "Sensor" + datares.rows[i].doc.SensorID;
                     nodesObject["Latitude"] = datares.rows[i].doc.Latitude;
                     nodesObject["Longitude"] = datares.rows[i].doc.Longitude;
-                    nodesObject["Temperature"] = sensorData[i].sensor.Temperature;
-                    nodesObject["Moisture"] = sensorData[i].sensor.Moisture;
-                    nodesObject["Salinity"] = sensorData[i].sensor.Salinity;
-                    nodesObject["Ph"] = sensorData[i].sensor.Ph;
+                    nodesObject["Temperature"] = sensorData.rows[n-1].doc.data.temperature;
+                    nodesObject["Moisture"] = sensorData.rows[n-1].doc.data.moisture;
+                    nodesObject["Salinity"] = sensorData.rows[n-1].doc.data.salinity;
+                    nodesObject["Humidity"] = sensorData.rows[n-1].doc.data.humidity;
                     nodesObject["x"] = 660 - count;
                     count = count + 150;
                     nodesObject["y"] = count;
@@ -91,66 +92,66 @@
                 topologyData.links = links;
                 draw();
             });
-            }, 10000);
+          }, 10000);
 
             });
 
 
         function draw() {
-        	(function(nx) {
+        (function(nx) {
             /**
              * define application
              */
-        	    var Shell = nx.define(nx.ui.Application, {
-        	        methods: {
-        	            start: function() {
-        	                //your application main entry
+           var Shell = nx.define(nx.ui.Application, {
+               methods: {
+                   start: function() {
+                       //your application main entry
 
                             if(flag==0){
-            	                // initialize a topology
-            	                 topo = new nx.graphic.Topology({
-            	                    // set the topology view's with and height
-            	                    width: 1000,
-            	                    height: 580,
-            	                    // node config
-            	                    nodeConfig: {
-            	                        // label display name from of node's model, could change to 'model.id' to show id
-            	                        label: 'model.name',
+                           // initialize a topology
+                            topo = new nx.graphic.Topology({
+                               // set the topology view's with and height
+                               width: 1000,
+                               height: 580,
+                               // node config
+                               nodeConfig: {
+                                   // label display name from of node's model, could change to 'model.id' to show id
+                                   label: 'model.name',
                                         iconType: 'model.device_type'
-            	                    },
-            	                    // link config
-            	                    linkConfig: {
-            	                        // multiple link type is curve, could change to 'parallel' to use parallel link
-            	                        linkType: 'curve'
-            	                    },
+                               },
+                               // link config
+                               linkConfig: {
+                                   // multiple link type is curve, could change to 'parallel' to use parallel link
+                                   linkType: 'curve'
+                               },
 
                                     /*nodeSetConfig: {
                                     label: 'model.id',
                                     iconType: 'model.iconType'
                                     },*/
-            	                    // show node's icon, could change to false to show dot
-            	                    showIcon: true
-            	                });
+                               // show node's icon, could change to false to show dot
+                               showIcon: true
+                           });
                                 flag = 1;
                             }
-        	                //set data to topology
-        	                topo.data(topologyData);
-        	                //attach topology to document
-        	                topo.attach(this);
-        	            }
-        	        }
-        	    });
+                       //set data to topology
+                       topo.data(topologyData);
+                       //attach topology to document
+                       topo.attach(this);
+                   }
+               }
+           });
 
-        	    /**
-        	     * create application instance
-        	     */
-        	    var shell = new Shell();
+           /**
+            * create application instance
+            */
+           var shell = new Shell();
 
-        	    /**
-        	     * invoke start method
-        	     */
-        	    shell.start();
-            	})(nx);
+           /**
+            * invoke start method
+            */
+           shell.start();
+            })(nx);
         }
     </script>
     </body>

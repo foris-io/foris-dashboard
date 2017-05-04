@@ -92,8 +92,6 @@
                     }
                 });
             }
-
-
         }]);
 
     </script>
@@ -209,68 +207,38 @@
                 </li>
 
 
+
                 <li role="presentation" class="dropdown">
-                  <!--<a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">-->
-                    <!--<i class="fa fa-envelope-o"></i>-->
-                    <!--<span class="badge bg-green"></span>-->
+                  <a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
+                    <i class="fa fa-envelope-o"></i>
+                    <span class="badge bg-green"></span>
+
+                    <script>
+
+                      $.getJSON('/sensorStatus', function (data) {
+                      var sensorStatus = [];
+                      sensorStatus = data;
+                      var arr = ["list", "items", "here"];
+                      for(var i in arr) {
+                          if(sensorStatus.rows[i].doc.status === 'False'){
+                          /*  $("#menu1").append("<li><a><span><span>Node1</span><span class='time'>" + sensorStatus.rows[i].doc.TimeStamp + "</span></span>
+                      <span class='message'>" + "Error in recieveing the data from Node1</span></a></li>");*/
+                        $("#menu1").append("<li><a><span>Error in recieveing the data from Node1 at " + sensorStatus.rows[i].doc.TimeStamp + "</span></a></li>");
+                        //$("#menu1").append("<li>abc</li>");
+                      }
+                      }
+                    });
+                    </script>
                   <!--</a>-->
                   <ul id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu">
+
                     <li>
-                      <a>
-                        <span class="image"><img src="/images/img.jpg" alt="Profile Image" /></span>
-                        <span>
-                          <span>John Smith</span>
-                          <span class="time">3 mins ago</span>
-                        </span>
-                        <span class="message">
-                          Film festivals used to be do-or-die moments for movie makers. They were where...
-                        </span>
-                      </a>
-                    </li>
-                    <li>
-                      <a>
-                        <span class="image"><img src="/images/img.jpg" alt="Profile Image" /></span>
-                        <span>
-                          <span>John Smith</span>
-                          <span class="time">3 mins ago</span>
-                        </span>
-                        <span class="message">
-                          Film festivals used to be do-or-die moments for movie makers. They were where...
-                        </span>
-                      </a>
-                    </li>
-                    <li>
-                      <a>
-                        <span class="image"><img src="/images/img.jpg" alt="Profile Image" /></span>
-                        <span>
-                          <span>John Smith</span>
-                          <span class="time">3 mins ago</span>
-                        </span>
-                        <span class="message">
-                          Film festivals used to be do-or-die moments for movie makers. They were where...
-                        </span>
-                      </a>
-                    </li>
-                    <li>
-                      <a>
-                        <span class="image"><img src="/images/img.jpg" alt="Profile Image" /></span>
-                        <span>
-                          <span>John Smith</span>
-                          <span class="time">3 mins ago</span>
-                        </span>
-                        <span class="message">
-                          Film festivals used to be do-or-die moments for movie makers. They were where...
-                        </span>
-                      </a>
-                    </li>
-                    <li>
-                      <div class="text-center">
-                        <a>
-                          <strong>See All Alerts</strong>
-                          <i class="fa fa-angle-right"></i>
-                        </a>
-                      </div>
-                    </li>
+                    <a>
+                      <span>
+                        <span class='message'><strong>You have following notifications!</strong></span>
+                      </span>
+                    </a>
+                  </li>
                   </ul>
                 </li>
               </ul>
@@ -442,28 +410,28 @@
 
                   var nextday;
 
-                  //nextday = getnextday(1);
+                  nextday = getnextday(1);
                   var today = new Date();
                   document.getElementById("dayone").innerHTML = weekDay[today.getDay()];
-                  document.getElementById("tempone").innerHTML = weatherResult[0];
+                  document.getElementById("tempone").innerHTML = weatherResult[1]+1;
 
-                  nextday = getnextday(2);
+                  nextday = getnextday(1);
                   document.getElementById("daytwo").innerHTML = weekDay[nextday.getDay()];
                   document.getElementById("temptwo").innerHTML = weatherResult[1];
 
-                  nextday = getnextday(3);
+                  nextday = getnextday(2);
                   document.getElementById("daythree").innerHTML = weekDay[nextday.getDay()];
                   document.getElementById("tempthree").innerHTML = weatherResult[2];
 
-                  nextday = getnextday(4);
+                  nextday = getnextday(3);
                   document.getElementById("dayfour").innerHTML = weekDay[nextday.getDay()];
                   document.getElementById("tempfour").innerHTML = weatherResult[3];
 
-                  nextday = getnextday(5);
+                  nextday = getnextday(4);
                   document.getElementById("dayfive").innerHTML = weekDay[nextday.getDay()];
                   document.getElementById("tempfive").innerHTML = weatherResult[4];
 
-                  nextday = getnextday(6);
+                  nextday = getnextday(5);
                   document.getElementById("daysix").innerHTML = weekDay[nextday.getDay()];
                   document.getElementById("tempsix").innerHTML = weatherResult[5];
 
@@ -471,11 +439,11 @@
                   document.getElementById("dayseven").innerHTML = weekDay[nextday.getDay()];
                   document.getElementById("tempseven").innerHTML = weatherResult[6];*/
 
-                  var today = new Date();
-                  document.getElementById("currentday").innerHTML = weekDay[today.getDay()];
+                  //var today = new Date();
+                  //document.getElementById("currentday").innerHTML = weekDay[today.getDay()];
 
                 });
-                </script>
+              </script>
                 <div class="col-md-6 col-sm-6 col-xs-12">
                   <div class="x_panel">
                     <div class="x_title">
@@ -662,8 +630,6 @@
                     var valh = data[i].Humidity;  //Sensor value
                     humidity.push(valh);
                     avg_humidity = avg_humidity + valh;
-
-
                 }
 
                 if (data.length != 0) {

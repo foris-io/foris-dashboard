@@ -47,6 +47,7 @@ app.get("/sensordata",user.sensordata);
 app.get("/sensortopology", user.sensortopology);
 app.get('/sensorRealTimeData', sensorTopology.sensorRealTimeData);
 app.get('/sensorInfo', sensorTopology.sensorInfo);
+app.get('/sensorStatus',sensorTopology.sensorStatus);
 //end of sensor topology
 
 //pages
@@ -60,6 +61,7 @@ app.get('/salinity',user.salinity);
 app.get('/hometest', routes.hometest);
 app.get('/weatherdata', weather.fetchWeatherData);
 app.get('/weatherdatamin', weather.fetchWeatherDataMin);
+app.get('/weatherdatamain', weather.fetchWeatherDataMain);
 
 
 http.createServer(app).listen(app.get('port'), function(){
