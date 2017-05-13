@@ -2,7 +2,7 @@ var request = require("request");
 //var weatherUrl = 'https://twcservice.mybluemix.net/api/weather/v1/geocode/?latitude=' + +  '/&longitude=' + +'/forecast/daily/7day.json';
 
 var fetchWeatherData = function(req,res){
-  var weatherUrl = `https://twcservice.mybluemix.net/api/weather/v1/geocode/37.806125/-122.230467/forecast/daily/7day.json`;
+  var weatherUrl = "https://twcservice.mybluemix.net/api/weather/v1/geocode/37.806125/-122.230467/forecast/daily/7day.json";
 
   request.get(weatherUrl, {
     'auth': {
@@ -29,7 +29,7 @@ var fetchWeatherData = function(req,res){
 }
 
 var fetchWeatherDataMain = function(req,res){
-  var weatherUrl = `https://twcservice.mybluemix.net/api/weather/v1/geocode/37.806125/-122.230467/forecast/daily/7day.json`;
+  var weatherUrl = "https://twcservice.mybluemix.net/api/weather/v1/geocode/37.806125/-122.230467/forecast/daily/7day.json";
 
   request.get(weatherUrl, {
     'auth': {
@@ -57,7 +57,7 @@ var fetchWeatherDataMain = function(req,res){
 
 
 var fetchWeatherDataMin = function(req,res){
-  var weatherUrl = `https://twcservice.mybluemix.net/api/weather/v1/geocode/37.806125/-122.230467/forecast/daily/7day.json`;
+  var weatherUrl = "https://twcservice.mybluemix.net/api/weather/v1/geocode/37.806125/-122.230467/forecast/daily/7day.json";
 
   request.get(weatherUrl, {
     'auth': {
@@ -84,7 +84,7 @@ var fetchWeatherDataMin = function(req,res){
 }
 
 var fetchWeatherDataStatus = function(req,res){
-  var weatherUrl = `https://twcservice.mybluemix.net/api/weather/v1/geocode/37.806125/-122.230467/forecast/daily/7day.json`;
+  var weatherUrl = "https://twcservice.mybluemix.net/api/weather/v1/geocode/37.806125/-122.230467/forecast/daily/7day.json";
 
   request.get(weatherUrl, {
     'auth': {
