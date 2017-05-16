@@ -61,16 +61,16 @@
 
                     });
 
-                    $http({
-                        method: 'GET',
-                        url: '/sensordata'
-                    }).
-                    then(function(response)
-                    {
-                        console.log("Got sensor info");
-                        $scope.sensordata = response.data;
-
-                    });
+//                    $http({
+//                        method: 'GET',
+//                        url: '/sensordata'
+//                    }).
+//                    then(function(response)
+//                    {
+//                        console.log("Got sensor info");
+//                        $scope.sensordata = response.data;
+//
+//                    });
                 }
 
             });
@@ -132,8 +132,8 @@
                   <li><a><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li><a href="/home">Dashboard</a></li>
-                      <!-- <li><a href="index2.php">Dashboard2</a></li>
-                      <li><a href="index3.php">Dashboard3</a></li> -->
+                      <li><a href="/livedata">Live Data</a></li>
+
                     </ul>
                   </li>
                   <li><a><i class="fa fa-table"></i> Sensors <span class="fa fa-chevron-down"></span></a>
@@ -286,6 +286,12 @@
              <div class="count" id="avg_humidity">38</div>
              <span class="count_bottom"><i class="red"><i class="fa fa-sort-asc"></i>1% </i> From last Week</span>
              </div>
+
+            <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+              <span class="count_top"><i class="fa fa-tait"></i> Water Consumption</span>
+              <div class="count" id="avg_water_cons">8</div>
+              <span class="count_bottom"><i class="green"><i class="fa fa-sort-desc"></i>1% </i> From last Week</span>
+            </div>
 
           </div>
           <!-- /top tiles -->
@@ -648,6 +654,7 @@
                     avg_salinity = 0,
                     avg_pH = 0,
                     avg_humidity = 0,
+                    avg_water_cons = 0,
                     tickInterval = Math.round(data.length / 10);
 
                 var timestamp = []; //creating moisture dictionary
@@ -656,6 +663,7 @@
                 var salinity = []; //creating Salinity dictionary
                 var humidity = []; //creating Humidity dictionary
                 var pH = []; //creating pH dictionary
+                var water_cons = []; //creating water consumption dictionary
 
                 for (var i = 0; i < data.length; i++) {
                      var dattime = data[i].TimeStamp;  //datetime
@@ -677,6 +685,10 @@
                     var valh = data[i].Humidity;  //Sensor value
                     humidity.push(valh);
                     avg_humidity = avg_humidity + valh;
+
+                    var valw = data[i].Water;  //Sensor value
+                    water_cons.push(valw);
+                    avg_water_cons = avg_water_cons + valw;
                 }
 
                 if (data.length != 0) {
@@ -691,6 +703,9 @@
 
                     avg_humidity = (avg_humidity / data.length);
                     document.getElementById("avg_humidity").innerHTML = avg_humidity.toFixed(2);
+
+                    avg_water_cons = (avg_water_cons / data.length);
+                    document.getElementById("avg_water_cons").innerHTML = avg_water_cons.toFixed(2);
 
                 }
 
@@ -810,7 +825,16 @@
                                 valueSuffix: ' %'
                             }
 
-                        }
+                        },
+                            {
+                                 name: 'Water Consumption',
+                                 type: 'column',
+                                 data: water_cons,
+                                 tooltip: {
+//                                     valueSuffix: ' mm'
+                                 }
+                            }
+
                         ]
                     });
 
@@ -966,6 +990,7 @@
                 "#E74C3C",
                 "#26B99A",
                 "#3498DB"
+
               ],
               hoverBackgroundColor: [
                 "#CFD4D8",

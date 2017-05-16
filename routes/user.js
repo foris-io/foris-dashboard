@@ -46,6 +46,10 @@ function sensortopology(req,res) {
     res.render('sensortopology', { title: 'SensorTopology'});
 }
 
+function livedata(req,res) {
+    res.render('live_data', { title: 'Live Data'});
+}
+
 exports.login = login;
 exports.home = home;
 exports.humidity = humidity;
@@ -55,7 +59,7 @@ exports.temperature = temperature;
 exports.pH = pH;
 exports.salinity = salinity;
 exports.sensortopology = sensortopology;
-
+exports.livedata = livedata;
 
 
 //MAINTAINING SESSION LOGIN
@@ -205,7 +209,7 @@ exports.sensordata = function(req, res){
 
                 var dattime = doc["doc"].TimeStamp;
                 var timestamp = new Date(Date.UTC(dattime.substring(0, 4), (dattime.substring(5, 7) - 1), dattime.substring(8, 10), dattime.substring(11, 13), dattime.substring(14, 16), dattime.substring(17, 19) ));
-
+                var water_cons = 8 / ((doc["doc"].data.moisture / 830));
 
 
                 if(doc["doc"].data.temperature > 0) {
@@ -216,6 +220,7 @@ exports.sensordata = function(req, res){
                         "Humidity": doc["doc"].data.humidity,
                         "Moisture": doc["doc"].data.moisture,
                         "Salinity": doc["doc"].data.salinity,
+                        "Water" : water_cons
                     });
                 }
 

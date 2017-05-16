@@ -62,6 +62,7 @@ app.get('/hometest', routes.hometest);
 app.get('/weatherdata', weather.fetchWeatherData);
 app.get('/weatherdatamin', weather.fetchWeatherDataMin);
 app.get('/weatherdatamain', weather.fetchWeatherDataMain);
+app.get('/livedata', user.livedata);
 
 
 http.createServer(app).listen(app.get('port'), function(){

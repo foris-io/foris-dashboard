@@ -43,6 +43,18 @@ function createUser(callback,dbName,docID, fname, lname, email,password,devid){
     callback(err, data);
   });
 }
+//To update a document in the database
+function updateUser(callback,dbName,docID,fieldID,newValue){
+    console.log("Reading document " + docID);
+    var db=getConnection(dbName);
+    db.get(docID, function(err, data) {
+        console.log("Error:", err);
+        console.log("Data:", data);
+        // keep a copy of the doc so we know its revision token
+        doc = data;
+        callback(err, data);
+    });
+}
 
 //Reading all documents in database
 function allDocs(callback,dbName){
