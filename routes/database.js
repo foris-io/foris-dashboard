@@ -12,6 +12,7 @@ var username = variables.username,
     cloudant = Cloudant({account: username, password: password}),
    // dbname = null,
     db = null,
+    userDoc = null,
     doc = null;
 
 
@@ -40,18 +41,22 @@ function createUser(callback,dbName,docID, fname, lname, email,password,devid){
     db.insert({ _id: docID, pwd: password, email: email, user_type: "C", device_id:devid, fname: fname, lname: lname }, function(err, data) {
     console.log("Error:", err);
     console.log("Data:", data);
+    userDoc  = data;
     callback(err, data);
   });
 }
 //To update a document in the database
-function updateUser(callback,dbName,docID,fieldID,newValue){
-    console.log("Reading document " + docID);
-    var db=getConnection(dbName);
-    db.get(docID, function(err, data) {
+function updateUser(callback,fieldID,newValue){
+    console.log("Reading document");
+    var db=getConnection(variables.foris_users);
+    if(fieldID == "pwd") {
+        userDoc.pwd = newValue;
+    }
+    db.insert(userDoc, function(err, data) {
         console.log("Error:", err);
         console.log("Data:", data);
-        // keep a copy of the doc so we know its revision token
-        doc = data;
+        // keep the revision of the update so we can delete it
+        userDoc._rev = data.rev;
         callback(err, data);
     });
 }
@@ -67,7 +72,22 @@ function allDocs(callback,dbName){
     });
 }
 
+//Get User Details
+function getUserDetails(callback,dbName,docID){
+    console.log("Reading document " + docID);
+    var db=getConnection(dbName);
+    db.get(docID, function(err, data) {
+        console.log("Error:", err);
+        console.log("Data:", data);
+        // keep a copy of the doc so we know its revision token
+        userDoc = data;
+        callback(err, data);
+    });
+}
+
 
 exports.fetchData=fetchData;
 exports.createUser=createUser;
 exports.allDocs = allDocs;
+exports.getUserDetails = getUserDetails;
+exports.updateUser = updateUser;

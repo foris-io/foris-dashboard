@@ -2,6 +2,7 @@
 var database = require('./database');
 var variables = require('./variables');
 var request = require('request');
+
 /*
  * GET users listing.
  */
@@ -12,6 +13,10 @@ exports.list = function(req, res){
 
 function login(req,res){
 	res.render('login', { title: variables.page_title + ' Login' });
+}
+
+function resetpassword(req,res) {
+    res.render('reset_password', { title: 'Reset Password'});
 }
 
 function home(req,res){
@@ -51,6 +56,7 @@ function livedata(req,res) {
 }
 
 exports.login = login;
+exports.resetpassword = resetpassword;
 exports.home = home;
 exports.humidity = humidity;
 exports.water    = water;
@@ -86,7 +92,7 @@ exports.signin = function(req, res) {
     var name = req.param("name");
     var password = req.param("password");
     // read a document
-    database.fetchData(function(err, results) {
+    database.getUserDetails(function(err, results) {
         if (err) {
             // throw err;
             console.log("Invalid User Name & Password");
@@ -152,7 +158,7 @@ exports.profileusername = function(req, res){
     console.log("Inside profileusername");
     var name = req.session.uname;
     console.log(req.session.uname);
-    database.fetchData(function(err, results) {
+    database.getUserDetails(function(err, results) {
         if (err) {
             console.log("Unable to get user details");
             res.send({
@@ -256,3 +262,42 @@ exports.logoutsession = function(req, res) {
         "status" : 200
     });
 };
+
+//Reset Password functionality
+exports.resetpasswordfunc = function(req, res) {
+    console.log("Inside Reset Password");
+    var pwd1 = req.param("pwd1"),
+        pwd2 = req.param("pwd2"),
+        username = req.param("username");
+
+    database.getUserDetails(function(err, results) {
+        if (err) {
+            console.log("Unable to get user details");
+            res.send({
+                "status" : 100
+            });
+        } else {
+            console.log(results);
+
+    // read a document
+    database.updateUser(function(err, results) {
+        if (err) {
+            // throw err;
+
+            console.log("Error message: " + err.description + ". Reason: " + err.reason);
+
+            res.send({
+                "status" : err.statusCode
+            });
+        } else {
+
+            console.log("Password reset success");
+            res.render('index');
+        }
+    },"pwd",pwd1);
+
+        }
+    }, variables.foris_users, username);
+};
+
+

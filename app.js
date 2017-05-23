@@ -36,6 +36,8 @@ if ('development' == app.get('env')) {
 app.get('/', routes.index);
 app.get('/users', user.list);
 app.get('/login',user.login);
+app.get('/resetpassword',user.resetpassword);
+app.post('/resetpasswordfunc',user.resetpasswordfunc);
 app.get('/checklogin', user.checklogin);
 app.post('/signin',user.signin);
 app.post('/signup',user.signup);
@@ -63,6 +65,7 @@ app.get('/weatherdata', weather.fetchWeatherData);
 app.get('/weatherdatamin', weather.fetchWeatherDataMin);
 app.get('/weatherdatamain', weather.fetchWeatherDataMain);
 app.get('/livedata', user.livedata);
+
 
 
 http.createServer(app).listen(app.get('port'), function(){

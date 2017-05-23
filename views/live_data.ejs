@@ -317,27 +317,25 @@
   <!--Sensor chart start-->
   <script>
 
-//    function updateChart(series,parameter)
-//    {
-//        $.getJSON('/sensordata', function (data) {
-//
-//                var d2 = data[i];
-//                var val = d2[parameter];  //Sensor value
-//
-//                data_point.push({
-//                    x: dattime, y: val
-//                });
-//
-//                var x = (new Date()).getTime(), // current time
-//                    y = val;
-//                series.addPoint([x, y], true, true);
-//            }
-//
-//        });
-//
-//
-//
-//    }
+    function updateChart(series,parameter)
+    {
+        $.getJSON('/sensordata', function (data) {
+
+                var d2 = data[data.length - 1];
+                var val = d2[parameter];  //Sensor value
+
+                var x = (new Date()).getTime(), // current time
+                    y = val;
+                series.addPoint([x, y], true, true);
+
+                return series;
+
+
+        });
+
+
+
+    }
 
 
 

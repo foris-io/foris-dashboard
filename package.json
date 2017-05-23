@@ -6,11 +6,16 @@
     "start": "node app.js"
   },
   "dependencies": {
-    "async": "^2.1.5",
+    "async": "^2.4.1",
+    "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.7.0",
     "cloudant": "^1.7.1",
     "ejs": "*",
     "express": "3.2.6",
+    "express-session": "^1.15.3",
+    "nodemailer": "^4.0.1",
+    "passport": "^0.3.2",
+    "passport-local": "^1.0.0",
     "request": "^2.81.0"
   }
 }
